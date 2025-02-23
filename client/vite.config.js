@@ -4,14 +4,14 @@ import react from '@vitejs/plugin-react'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  server:{
-    port:3000,
-    proxy:{
-      '/api':{
-        target:'http://localhost:5000',
-        
-      }
-    }
-    
+  server: {
+    port: 3000,
+    proxy: {
+      '/api': {
+        target: 'https://chatmate-dc97.onrender.com',
+        changeOrigin: true, // Important for handling different origins
+        secure: false, // Bypass SSL verification (not recommended for production)
+      },
+    },
   },
 })

@@ -4,7 +4,7 @@ import useConversation from "../../zustand/useConversation";
 const Conversation = ({ conversation, lastIdx, emoji }) => {
 	const { selectedConversation, setSelectedConversation } = useConversation();
 	const isSelected = selectedConversation?._id === conversation._id;
-	const {onlineUsers} = useSocketContext();
+	const { onlineUsers } = useSocketContext();
 	const isOnline = onlineUsers.includes(conversation._id);
 
 	return (
@@ -15,10 +15,20 @@ const Conversation = ({ conversation, lastIdx, emoji }) => {
 			`}
 				onClick={() => setSelectedConversation(conversation)}
 			>
-				<div className={`avatar ${isOnline ? "online":""}`}>
-					<div className='w-12 rounded-full'>
-						<img src={conversation.profilePic} alt='user avatar' />
+				<div className={`relative ${isOnline ? "online" : ""}`}>
+					<div className='w-12 h-12 rounded-full overflow-hidden'>
+						<img
+							src={conversation.profilePic || "/default-avatar.png"}
+							alt='user avatar'
+							className='w-full h-full object-cover'
+							onError={(e) => {
+								e.target.src = "/default-avatar.png"; // Fallback image
+							}}
+						/>
 					</div>
+					{isOnline && (
+						<div className='absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-white'></div>
+					)}
 				</div>
 
 				<div className='flex flex-col flex-1'>

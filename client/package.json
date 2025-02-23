@@ -18,6 +18,8 @@
     "react-router-dom": "^6.22.3",
     "server": "file:..",
     "socket.io-client": "^4.7.5",
+    "three": "^0.173.0",
+    "vanta": "^0.5.24",
     "zustand": "^4.5.2"
   },
   "devDependencies": {

@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 body {
-	background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("/bg.png");
-	background-repeat: no-repeat;
+	background: url("/bg.png") no-repeat center center fixed;
 	background-size: cover;
-	background-position: center;
-}
+	filter: none; /* Ensure no blur effect is applied */
+  }
+  
 
 /* dark mode looking scrollbar */
 ::-webkit-scrollbar {
@@ -63,3 +63,36 @@ body {
         display: none;
     }
 }
+@keyframes typing {
+	0% { width: 0; }
+	50% { width: 100%; }
+	60% { width: 100%; } /* Pause at full text */
+	100% { width: 0; } /* Delete text */
+  }
+  
+  @keyframes blink {
+	50% { opacity: 0; }
+  }
+  
+  .typing-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: rgb(233, 8, 233); /* Change text color to purple */
+  }
+  
+  .typing-text::after {
+	content: "Chate Mate"; /* Set text content */
+	display: inline-block;
+	overflow: hidden;
+	white-space: nowrap;
+	border-right: 2px solid rgb(233, 8, 233); /* Change cursor color to purple */
+	width: 0;
+	animation: typing 6s steps(10, end) infinite;
+  }
+  
+  .cursor {
+	animation: blink 0.8s infinite;
+	color: rgb(233, 8, 233); /* Blinking cursor color */
+  }
+  

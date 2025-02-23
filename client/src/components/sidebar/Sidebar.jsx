@@ -1,20 +1,19 @@
 import Conversations from './Conversations'
-
 import SearchInput from './SearchInput'
-import logo from '/3.png'
 
 const Sidebar = () => {
     return (
-        <div className='border-r border-slate-500 p-4 py-4 flex flex-col '>
-            <div className="flex items-center  justify-center mb-4 px-3">
-                <img src={logo} alt="logo" className=" w-100  h-20" />
-
+        <div className='border-r border-slate-500 p-4 py-4 flex flex-col'>
+            {/* Typing Animation Only */}
+            <div className="flex justify-center mb-4">
+                <h1 className="text-2xl font-bold typing-container">
+                    <span className="typing-text"></span><span className="cursor">|</span>
+                </h1>
             </div>
-            <SearchInput />
-            <div className="devider px-3"></div>
-            <Conversations />
-            
 
+            <SearchInput />
+            <div className="divider px-3"></div>
+            <Conversations />
         </div>
     )
 }
