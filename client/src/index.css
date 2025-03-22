@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-	background: url("/bg.png") no-repeat center center fixed;
+	background: url("/bg1.png") no-repeat center center fixed;
 	background-size: cover;
 	filter: none; /* Ensure no blur effect is applied */
   }
